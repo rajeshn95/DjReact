@@ -18,14 +18,13 @@ class Register extends Component {
   }
   register = event => {
     // console.log(this.state.credentials);
-    fetch(`${process.env.REACT_APP_API_URL}/post/users/`, {
+    fetch('http://127.0.0.1:8000/post/users/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify(this.state.credentials)
       }).then( resp => resp.json())
       .then( res => {
-          // this.setState({isLoginView: true});
-          window.location.href = '/';
+        //  window.location.href = "/";
       })
       .catch( error => console.log(error))
   }
