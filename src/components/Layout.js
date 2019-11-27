@@ -1,4 +1,5 @@
 import React, { Component }from 'react';
+import { withCookies } from 'react-cookie';
 import {
   Navbar,
   NavbarBrand,
@@ -8,7 +9,19 @@ import {
 } from 'reactstrap';
 
 class Layout extends Component {
+ 
+  state = {
+    token: this.props.cookies.get('token')  
+  }
+
+  logout = event => {
+    this.props.cookies.remove('token')
+    // localStorage.clear();
+    window.location.href = '/';
+  }
+
   render() {
+    if(!this.state.token){
     return (
       <div>
         <Navbar color="light" light expand="md">
@@ -23,8 +36,23 @@ class Layout extends Component {
           </Nav>
         </Navbar>
       </div>
-    );
+    );}else{
+      return (
+        <div>
+          <Navbar color="light" light expand="md">
+            <NavbarBrand href="/">Reactstrap</NavbarBrand>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink onClick={this.logout}>Logout</NavLink>
+              </NavItem>
+            </Nav>
+          </Navbar>
+        </div>
+      );
+      
+    }
+
   }
 }
 
-export default Layout;
+export default withCookies(Layout);

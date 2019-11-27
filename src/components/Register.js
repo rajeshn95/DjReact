@@ -6,7 +6,9 @@ class Register extends Component {
   state = {
     credentials: {
       username: '',
-      password: ''
+      password: '',
+      // email:'',
+      // confirmPassword:'',
     }
   }
   inputChanged = event => {
@@ -23,6 +25,7 @@ class Register extends Component {
       }).then( resp => resp.json())
       .then( res => {
           // this.setState({isLoginView: true});
+          window.location.href = '/';
       })
       .catch( error => console.log(error))
   }
@@ -40,7 +43,8 @@ class Register extends Component {
 
           {/* <FormGroup>
             <Label>Email</Label>
-            <Input type="email" name="email" placeholder="Enter your e-mail" />
+            <Input type="email" name="email" placeholder="Enter your e-mail" 
+            value={this.state.credentials.email} onChange={this.inputChanged}/>
           </FormGroup> */}
 
           <FormGroup>
@@ -51,7 +55,8 @@ class Register extends Component {
 
           {/* <FormGroup>
             <Label>Confirm Password</Label>
-            <Input type="password" name="confirmPassword" placeholder="Enter password again" />
+            <Input type="password" name="confirmPassword" placeholder="Enter password again" 
+            value={this.state.credentials.confirmPassword} onChange={this.inputChanged}/>
           </FormGroup> */}
           
           <FormGroup>
