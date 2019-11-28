@@ -24,9 +24,9 @@ class Register extends Component {
       body: JSON.stringify(this.state.credentials)
       }).then( resp => resp.json())
       .then( res => {
-        //  window.location.href = "/";
+          console.log(res);
       })
-      .catch( error => console.log(error))
+      .catch( error => console.log(error));
   }
   
   render(){ 
