@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './components/Layout';
 
 class App extends Component {
-
+// learn more
   render() {
     return (
       <BrowserRouter>
